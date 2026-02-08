@@ -1,0 +1,33 @@
+66010914080 เพ็ญนภา เรืองชม http://10.119.195.252/
+<table border="1">
+<tr>
+	<th>Order ID</th>
+    <th>สินค้า</th>
+    <th>ประเภทสินค้า</th>
+    <th>วันที่</th>
+    <th>ประเทศ</th>
+    <th>จำนวนเงิน</th>
+</tr>
+<?php
+	include_once("connect.php");
+	$sql = "SELECT * FROM popsupermarket ORDER BY p_date DESC";
+	$rs = mysqli_query($conn,$sql);
+	while ($data = mysqli_fetch_array($rs)){
+?>
+<tr>
+	<td><?php echo $data['p_order_id'];?></td>
+    <td><?php echo $data['p_product_name'];?></td>
+    <td><?php echo $data['p_category'];?></td>
+    <td><?php echo $data['p_date'];?></td>
+    <td><?php echo $data['p_country'];?></td>
+    <td><?php echo $data['p_amount'];?></td>
+<td><img src="<?php echo $data['p_product_name'];?>.jpg"
+</tr>
+<?php } ?>
+</table>
+</body>
+</html>
+
+SQL
+SELECT SUM(`p_amount`) AS total FROM `popsupermarket`;
+SELECT `p_country`, SUM(`p_amount`) AS total FROM `popsupermarket`GROUP BY `p_country`;
